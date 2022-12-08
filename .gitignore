@@ -1,0 +1,9 @@
+node_modules/
+
+# Gatsby related
+.cache/
+public
+src/gatsby-types.d.ts
+
+# Mac files
+.DS_Store

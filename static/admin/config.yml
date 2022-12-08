@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  repo: github
+  branch: main
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+    openAuthoring: '{{message}}'
+
+local_backend:
+  url: http://localhost:8081/api/v1
+
+media_folder: static/assets
+public_folder: '/assets/'
+
+collections:
+  - name: 'pages'
+    label: 'Pages'
+    editor:
+      preview: false
+    files:
+      - label: Homepage
+        name: homepage
+        file: content/pages/homepage.md
+        media_folder: /static/assets/homepage
+        public_folder: /assets/homepage
+        fields:
+          - label: Homepage - Heading
+            name: heading
+            widget: object
+            collapsed: false
+            summary: '{{fields.title}}'
+            fields:
+              - {
+                  label: Title,
+                  name: title,
+                  widget: markdown,
+                  minimal: true,
+                  buttons: [bold],
+                  hint:
+                    'Bold text will appear blue, verify for not having double
+                    line spacing',
+                }
+              - { label: Text, name: text }
+              - { label: Image, name: image, widget: image }
